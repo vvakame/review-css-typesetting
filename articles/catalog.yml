@@ -1,0 +1,9 @@
+PREDEF:
+  # - preface.re
+
+CHAPS:
+  - vvakame.re
+  - vvakame2.re
+
+POSTDEF:
+  # - contributors.re

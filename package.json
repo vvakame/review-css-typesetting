@@ -1,0 +1,47 @@
+{
+  "name": "review-css-typesetting",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvakame/review-css-typesetting.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vvakame/review-css-typesetting/issues"
+  },
+  "homepage": "https://github.com/vvakame/review-css-typesetting#readme",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "global-bundler": "gem install bundler",
+    "global": "npm run global-bundler",
+    "postinstall": "bundle install",
+    "pdf:latex": "grunt pdf",
+    "md": "grunt markdown",
+    "html": "grunt html",
+    "toc": "cd articles && review-index -a --html > toc.html",
+    "css": "grunt html && npm run toc && cd scripts && tsc && node main.js",
+    "test": "npm run html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/js-yaml": "^3.10.1",
+    "@types/jsdom": "^11.0.4",
+    "@types/node": "^9.4.6",
+    "grunt": "1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-open": "0.2.3",
+    "grunt-shell": "1.3.0",
+    "js-yaml": "^3.6.0",
+    "jsdom": "^11.6.2",
+    "load-grunt-tasks": "3.5.0",
+    "typescript": "^2.7.2",
+    "vivliostyle": "^2017.6.0"
+  }
+}
