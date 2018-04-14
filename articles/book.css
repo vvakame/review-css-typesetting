@@ -224,6 +224,7 @@ table {
 
 @page {
   margin: 10mm;
+  margin-top: 15mm;
 }
 /* A4設定 */
 /*
@@ -250,7 +251,7 @@ table {
     @top-left {
     /* 本当は現在の深さ1の見出しを出したい */
     /* かつ、sectionの1ページ目だったら出したくない */
-    content: "Now and Features";
+    content: "Re:VIEW+CSS組版やっていき";
     vertical-align: bottom;
     border-bottom: solid 1px black; 
   }
@@ -272,7 +273,7 @@ table {
   @top-right {
     /* 本当は現在の深さ2の見出しを出したい */
     /* かつ、sectionの1ページ目だったら出したくない */
-    content: "Now and Features";
+    content: "Re:VIEW+CSS組版やっていき";
     vertical-align: bottom;
     border-bottom: solid 1px black; 
   }
@@ -291,13 +292,13 @@ table {
 }
 
 /* NOTE これイケるのでは？と思ったけどダメだった
-@page tomorrowkey:right {
+@page foobar:right {
   @top-right {
-    content: "ともっきーだよー";
+    content: "章タイトルだよー";
   }
 }
-section.tomorrowkey {
-  page: tomorrowkey;
+section.foobar {
+  page: foobar;
 }
  */
 
