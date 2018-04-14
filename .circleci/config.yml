@@ -16,11 +16,17 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Setup
+          command: bundler install
+      - run:
           name: Test
           command: npm test
       - run:
-          name: Build PDF
+          name: Build PDF by LaTeX
           command: npm run pdf:latex
       - store_artifacts:
           path: ./articles/review-css-typesetting.pdf
           destination: review-css-typesetting.pdf
+      - run:
+          name: Build CSS
+          command: npm run css

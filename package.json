@@ -22,6 +22,7 @@
     "global": "npm run global-bundler",
     "postinstall": "bundle install",
     "pdf:latex": "grunt pdf",
+    "pdf": "npm run pdf:latex",
     "md": "grunt markdown",
     "html": "grunt html",
     "toc": "cd articles && review-index -a --html > toc.html",
