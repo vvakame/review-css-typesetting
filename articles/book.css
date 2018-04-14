@@ -77,6 +77,10 @@ body {
     line-height: 1.6;
     padding-top: 1.5rem;
   }
+  /* A5設定 */
+  :root {
+    font-size: 9pt;
+  }
 
   a {
     text-decoration: none;
@@ -211,7 +215,7 @@ table {
 }
 
 @page {
-  size: A4;
+  size: A5;
   /* トンボ */
   marks: crop cross; 
 
@@ -219,13 +223,31 @@ table {
 }
 
 @page {
-  margin: 20mm;
+  margin: 10mm;
 }
+/* A4設定 */
+/*
 @page :left {
   margin-left: 30mm;
   padding: 1rem;
+}
+@page :right {
+  margin-right: 30mm;
+  padding: 1rem;
+}
+ */
+/* A5設定 */
+@page :left {
+  margin-left: 15mm;
+  padding: 1rem;
+}
+@page :right {
+  margin-right: 15mm;
+  padding: 1rem;
+}
 
-  @top-left {
+@page :left {
+    @top-left {
     /* 本当は現在の深さ1の見出しを出したい */
     /* かつ、sectionの1ページ目だったら出したくない */
     content: "Now and Features";
@@ -247,9 +269,6 @@ table {
 }
 
 @page :right {
-  margin-right: 30mm;
-  padding: 1rem;
-
   @top-right {
     /* 本当は現在の深さ2の見出しを出したい */
     /* かつ、sectionの1ページ目だったら出したくない */
