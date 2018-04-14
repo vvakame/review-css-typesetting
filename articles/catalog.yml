@@ -1,9 +1,12 @@
 PREDEF:
-  # - preface.re
+  - preface.re
 
 CHAPS:
-  - vvakame.re
-  - vvakame2.re
+  - why-css-typesetting.re
+  - whats-css-typesetting.re
+  - practice.re
+  - issue.re
+  - conclusion.re
 
 POSTDEF:
-  # - contributors.re
+  - syntax-example.re

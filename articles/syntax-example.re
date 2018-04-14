@@ -1,9 +1,11 @@
-= Re:VIEWの書き方色々
-
-== 出力例
+= Re:VIEW記法出力見本
 
 この節はPDFで出した時の出力例です。
 さまざまなRe:VIEW的表現を書くだけ書いておいて、LaTeX版とCSS版でPDFにどのような違いが出るかを確認します。
+
+== 出力見本
+
+#@# なるべく https://github.com/kmuto/review/blob/master/doc/format.ja.md の登場順にしてある 
 
  * 箇条書き
  ** 箇条書きです
@@ -97,6 +99,7 @@ strict graph {
 chap, title, chapref のテスト
 //}
 
+#@# prh:disable
 リンクの様子@<href>{https://github.com/vvakame/review-css-typesetting}こんな感じ。
 
 @<kw>{CSS組版,CSS typesetting}。
@@ -115,3 +118,11 @@ LaTeXでルビをサポートしていない https://github.com/kmuto/review/iss
 コラムだよ〜〜〜〜。
 
 ===[/column]
+
+== 節です
+
+節ですね。
+
+=== 項です
+
+項ですね。
