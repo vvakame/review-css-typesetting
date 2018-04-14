@@ -9,4 +9,5 @@ CHAPS:
   - conclusion.re
 
 POSTDEF:
+  - afterword.re
   - syntax-example.re

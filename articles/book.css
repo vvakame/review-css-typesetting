@@ -217,7 +217,7 @@ table {
 @page {
   size: A5;
   /* トンボ */
-  marks: crop cross; 
+  /* marks: crop cross; */
 
   /* 裁ち落としのとこまで塗りたかったら pentapod本を トンボ で検索 */
 }
