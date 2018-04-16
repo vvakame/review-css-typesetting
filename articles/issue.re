@@ -29,6 +29,12 @@ pentapodさんの本によると、Adobe Acrobatに課金してフォントデ�
 よって、今回の印刷ではフォントデータが欠損していても無視して無理やり印刷します。
 現状の到達点だから…！仕方ないから…！
 
+kmutoさんにTwitterで教えていただいた@<fn>{font-judge}ところによると、印刷所的にはフォントの埋込はCID、Type1はOK、Type3はアウト、という感じらしいです。
+知らない用語が多かったので調べたところ、モリサワのフォント用語集@<fn>{morisawa-dictionary}を見るのがよさそうでした。
+
+//footnote[font-judge][@<href>{https://twitter.com/kmuto/statuses/985670249289629696}]
+//footnote[morisawa-dictionary][@<href>{http://www.morisawa.co.jp/culture/dictionary/}]
+
 宿題に挑戦する読者のために、筆者が調べた範囲で参考になりそうなURLを掲載しておきます。
 
  * Vivliostyle.jsのフォーラムでの同様のやり取り
@@ -78,7 +84,7 @@ CSSこんなめんどくさかったっけ？
 
 リストなどのボックス系の見た目のものと、脚注が被ると見た目がおかしくなる場合があります（@<img>{bad-list-and-footnote}）。
 
-//image[bad-list-and-footnote][ページまたぎのリストと脚注の相性の悪さ…]{
+//image[bad-list-and-footnote][ページまたぎのリストと脚注の相性の悪さ…][scale=0.7]{
 //}
 
 これについて、今のところボックス系のものをページまたぎせずに配置するよう指定して迂回しました（@<list>{avoid-list-and-footnote-conflict}）。
@@ -105,7 +111,7 @@ table {
 図を見たほうがわかりやすいんですが、@<img>{bad-reset-hashbang}のようになります。
 ボックスの改ページと脚注が被ったりします。
 
-//image[bad-reset-hashbang][レンダリングが被る場合がある]{
+//image[bad-reset-hashbang][レンダリングが被る場合がある][scale=0.7]{
 //}
 
 #@# prh:disable
@@ -144,6 +150,16 @@ Vivliostyle Viewerを立ち上げて、Chromeでレンダリングさせて、�
 これは手元でやってみるとわかりますが、結構時間のかかる処理です。
 現在TechBoosterのこの本は無編集で150Pを超えていますが、Chromeでレンダリングを待つ（目次のレンダリング完了が目安）のに50秒、印刷機能を読み出してLoading previewの表示が終わるのに20秒かかります。
 うーん、気が重い…。
+
+== 他のブラウザを検討する
+
+今回はGoogle Chromeのみに絞って調査・チューニングをしました。
+代わりに、Mozilla Firefoxなどの別のブラウザを使うとどうなるでしょう…。
+
+kmutoさんに教えていただいた@<fn>{ff-and-font}ところによると、PDFへのフォント埋め込み事情はFirefoxのほうが優れているそうです。
+テキトーに試してみたところ、Firefoxが生成したPDFはフォントの埋込はバッチリで、紙面のレンダリングはさんざん…という結果でした。
+
+//footnote[ff-and-font][@<href>{https://twitter.com/kmuto/statuses/985672642047819776}]
 
 == 他の組版エンジンを検討する
 
