@@ -12,5 +12,7 @@ Gemfile.lock
 .DS_Store
 Thumbs.db
 
+distribute/
+
 articles/*.html
 scripts/*.js
