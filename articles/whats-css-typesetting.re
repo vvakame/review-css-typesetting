@@ -22,7 +22,7 @@ JavaScriptでいうとBabelを使ってstage 1の仕様を試す感じですね�
 
 //footnote[pentapod-css-book][@<href>{https://pentapod.github.io/c92/}]
 
-=== vivliostyle.jsについて
+== vivliostyle.jsについて
 
 vivliostyle.jsについて、簡潔な説明を与えるのは難しい気もしますがやってみましょう。
 

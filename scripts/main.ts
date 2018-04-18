@@ -16,7 +16,7 @@ interface Config {
     aut: string[];
     edt: string[];
     history: string[][];
-    date?: string;
+    date?: Date;
     pbl?: string;
     rights?: string;
 }
@@ -62,6 +62,8 @@ let result = "";
 
 const toc = generateTOC(getTOCdata(), catalog);
 
+const configDate = `${config.date!.getFullYear()}/${config.date!.getMonth()+1}/${config.date!.getDate()}`;
+
 const generatedHtml = `
 <!DOCTYPE html>
 <html>
@@ -77,15 +79,15 @@ const generatedHtml = `
 <aside>
     <h1>${config.booktitle}</h1>
     <div id="author">${config.aut.join(", ")} 著</div>
-    <div id="date">${config.date} 版</div>
-    <div id="pbl">${config.pbl} 発行</div>
+    <div id="date">${configDate} 版</div>
+    <div id="pbl" class="print-only">${config.pbl} 発行</div>
 </aside>
 
 ${toc}
 
 ${result}
 
-<aside>
+<aside class="print-only">
     <div>${config.booktitle}</div>
     <div>${config.history.map(s => s.join("<br>")).join("<br>")}</div>
     <div>著者 ${config.aut.join(", ")}</div>
