@@ -14,6 +14,7 @@ interface Catalog {
 interface Config {
     booktitle: string;
     aut: string[];
+    dsr: string[];
     edt: string[];
     history: string[][];
     date?: Date;
@@ -76,24 +77,81 @@ const generatedHtml = `
 </head>
 <body>
 
-<aside>
-    <h1>${config.booktitle}</h1>
-    <div id="author">${config.aut.join(", ")} 著</div>
-    <div id="date">${configDate} 版</div>
-    <div id="pbl" class="print-only">${config.pbl} 発行</div>
+<aside class="titlepage-page">
+    <div class="titlepage">
+        <!-- TODO brで調整するのcss雑魚感ハンパないのでやめたい… -->
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <h1 class="booktitle">${config.booktitle}</h1>
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <div class="author">${config.aut.join(", ")} 著</div>
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <br class="print-only">
+        <div>
+            <span id="date">${configDate} 版</span>
+            <span id="pbl" class="print-only">${config.pbl} 発行</span>
+        </div>
+    </div>
 </aside>
 
 ${toc}
 
 ${result}
 
-<aside class="print-only">
-    <div>${config.booktitle}</div>
-    <div>${config.history.map(s => s.join("<br>")).join("<br>")}</div>
-    <div>著者 ${config.aut.join(", ")}</div>
-    <div>編集 ${config.edt.join(", ")}</div>
-    <div>発行所 ${config.pbl}</div>
-    <div>${config.rights}</div>
+<aside class="print-only colophon-page">
+    <!-- TODO brで調整するのcss雑魚感ハンパないのでやめたい… -->
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <br class="print-only">
+    <div class="colophon">
+        <h1>${config.booktitle}</h1>
+        <hr>
+        <div>
+            ${config.history.map(s => s.join("<br>")).join("<br>")}
+        </div>
+        <div>著者 ${config.aut.join(", ")}</div>
+        <div>デザイン ${config.dsr.join(", ")}</div>
+        <div>編集 ${config.edt.join(", ")}</div>
+        <div>発行所 ${config.pbl}</div>
+        <hr>
+        <div>${config.rights}</div>
+    </div>
 </aside>
 
 </body>

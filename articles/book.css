@@ -95,6 +95,31 @@ body {
   }  
 }
 
+@media print {
+  .titlepage-page > .titlepage {
+    text-align: center;
+  }
+}
+.titlepage-page > .titlepage > h1 {
+  font-size: 2.5rem;
+}
+.titlepage-page > .titlepage > .author {
+  font-size: 2rem;
+}
+@media print {
+  .colophon-page > .colophon {
+    text-align: right;
+  }
+}
+.colophon-page > .colophon > h1 {
+  font-size: 1.8rem;
+}
+.colophon-page > .colophon > hr {
+  width: 50%;
+  margin-right: 0;
+  border: 1px solid black;
+}
+
 section {
   break-before: page;
   break-after: page;
@@ -319,6 +344,42 @@ section h1 {
 @page :first {
   padding-top: 0mm;
 }
+/* 1ページ目は扉なのでページ上部の装飾無し */
+@page :first {
+  @top-right {
+    content: " ";
+    border-bottom: none;
+  }
+  @top-left {
+    content: " ";
+    border-bottom: none;
+  }
+  @top-center {
+    content: " ";
+    border-bottom: none;
+  }
+}
+/* TODO 最終ページは奥付なのでページ上部の装飾無し */
+/* …はてどうやるんだ？？名前付きページはまだサポートされてなさそう… */
+/*
+section.colophon-page {
+  page: colophon;
+}
+@page colophon {
+  @top-right {
+    content: " ";
+    border-bottom: none;
+  }
+  @top-left {
+    content: " ";
+    border-bottom: none;
+  }
+  @top-center {
+    content: " ";
+    border-bottom: none;
+  }
+}
+ */
 
 .width-010per { width:  10%; }
 .width-020per { width:  20%; }
