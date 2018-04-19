@@ -47,16 +47,19 @@ $ docker run -t --rm -v $(pwd):/book vvakame/review:2.4 \
   /bin/bash -ci "cd /book && ./setup.sh && npm run pdf"
 //}
 
-図とか（@<img>{sample-image1}、@<img>{sample-image2}）。
+図とか（@<img>{sample-image1}）。
 
 //image[sample-image1][適当な画像][scale=0.3]{
 //}
 
 色々ありますね。
 
-//indepimage[sample-image2][採番無しの画像1]
+//indepimage[sample-image2][採番無しの画像1][scale=0.3]
 
-//numberlessimage[sample-numberlessimage][採番無しの画像2]
+//comment{
+紙面幅節約のため割愛 indepimageとあんまし変わらない
+//numberlessimage[sample-numberlessimage][採番無しの画像2][scale=0.3]
+//}
 
 //graph[sample-graph][graphviz][グラフ]{
 strict graph {
@@ -76,11 +79,14 @@ strict graph {
 よわそう	負けそうだったら既存のものよりよくない情報に対する返事
 //}
 
-//emtable[テーブル]{
-語句	意味
--------------------------------------------------------------
-よさそう	肯定的な返事 生返事の場合も多い
-すごそう	期待のもてる情報に対する返事
+//comment{
+  なんかcaptionが崩れるのでみなかったことにする たぶんRe:VIEW本体の変更とこっちが使ってるテンプレが乖離している
+  //emtable[テーブル]{
+  語句	意味
+  -------------------------------------------------------------
+  よさそう	肯定的な返事 生返事の場合も多い
+  すごそう	期待のもてる情報に対する返事
+  //}
 //}
 
 //quote{

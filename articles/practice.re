@@ -369,10 +369,12 @@ a.noteref::before {
 module ReVIEW
   class HTMLBuilder
     def footnote(id, str)
-      puts %Q(<p class="footnote" id="fn-#{normalize_id(id)}"><span>#{compile_inline(str)}</span></p>)
+      puts %Q(<p class="footnote" id="fn-#{normalize_id(id)}">
+              <span>#{compile_inline(str)}</span></p>)
     end
     def inline_fn(id)
-      %Q(<a id="fnb-#{normalize_id(id)}" href="#fn-#{normalize_id(id)}" class="noteref"></a>)
+      %Q(<a id="fnb-#{normalize_id(id)}" 
+          href="#fn-#{normalize_id(id)}" class="noteref"></a>)
     end
   end
 end
