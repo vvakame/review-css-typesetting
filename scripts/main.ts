@@ -42,28 +42,9 @@ const bookHtmlPath = path.join(articleDir, "book.html");
 const catalog: Catalog = yaml.load(fs.readFileSync(catalogPath, { encoding: "utf8" })) as any;
 const config: Config = yaml.load(fs.readFileSync(configPath, { encoding: "utf8" })) as any;
 
-let result = "";
-
-[
-    catalog.PREDEF || [],
-    catalog.CHAPS,
-    catalog.APPENDIX || [],
-    catalog.POSTDEF || [],
-].forEach(chapFiles => {
-    console.log(chapFiles);
-    chapFiles.forEach(chapFile => {
-        const chapPath = path.join(__dirname, "../articles/", chapFile);
-        const htmlPath = chapPath.replace(/\.re$/g, ".html");
-        const content = fs.readFileSync(htmlPath, { encoding: "utf8" });
-        // TODO このIDは正式なIDではないけどめんどいので
-        result += `<section id="chapter-${chapFile.replace(/\.re$/g, "")}">\n${content}\n</section>\n\n`;
-        console.log(chapPath);
-    })
-});
-
 const toc = generateTOC(getTOCdata(), catalog);
 
-const configDate = `${config.date!.getFullYear()}/${config.date!.getMonth()+1}/${config.date!.getDate()}`;
+const configDate = `${config.date!.getFullYear()}/${config.date!.getMonth() + 1}/${config.date!.getDate()}`;
 
 const generatedHtml = `
 <!DOCTYPE html>
@@ -112,9 +93,13 @@ const generatedHtml = `
     </div>
 </aside>
 
+${(catalog.PREDEF || []).map(chapFilePathToHTML).join("")}
+
 ${toc}
 
-${result}
+${catalog.CHAPS.map(chapFilePathToHTML).join("")}
+${(catalog.APPENDIX || []).map(chapFilePathToHTML).join("")}
+${(catalog.POSTDEF || []).map(chapFilePathToHTML).join("")}
 
 <aside class="print-only colophon-page">
     <!-- TODO brで調整するのcss雑魚感ハンパないのでやめたい… -->
@@ -266,4 +251,12 @@ function generateTOC(toc: TOC, catalog: Catalog) {
     });
 
     return nav.outerHTML;
+}
+
+function chapFilePathToHTML(chapFile: string) {
+    const chapPath = path.join(__dirname, "../articles/", chapFile);
+    const htmlPath = chapPath.replace(/\.re$/g, ".html");
+    const content = fs.readFileSync(htmlPath, { encoding: "utf8" });
+    // TODO このIDは正式なIDではないけどめんどいので
+    return `<section id="chapter-${chapFile.replace(/\.re$/g, "")}">\n${content}\n</section>\n\n`;
 }
