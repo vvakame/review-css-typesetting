@@ -77,7 +77,7 @@ body {
 @media print {
   :root {
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.5;
     padding-top: 1.5rem;
   }
   /* A5設定 */
@@ -156,7 +156,6 @@ a.noteref::before {
 }
  */
 
-
 nav.toc a::after {
   content: target-counter(attr(href), page);
   float: right;
@@ -165,6 +164,8 @@ nav.toc a::after {
 p {
   text-indent: 1rem;
   text-align: justify;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
 }
 
 /* .image,  */
@@ -189,11 +190,13 @@ p.caption::before {
 }
 
 pre.cmd {
+  font-size: 0.8rem;
   background-color: #444;
   color: white;
   padding: 1rem 2rem;
 }
 pre.list, pre.emlist {
+  font-size: 0.8rem;
   padding: 1rem 2rem;
   background-color: #eee;
   border: solid 3px gray;
