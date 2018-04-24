@@ -28,8 +28,8 @@ $ ./start-webserver
 # このリポジトリのディレクトリで
 $ ./setup.sh
 $ npm run css
-$ npx live-server --port=8989 --no-browser --cors --verbose
-$ open http://127.0.0.1:8000/viewer/vivliostyle-viewer.html#x=http://127.0.0.1:8989/articles/book.html
+$ npm run serve
+$ open http://127.0.0.1:8000/viewer/vivliostyle-viewer.html#x=http://127.0.0.1:8989/book.html
 ```
 
 あとはChromeの印刷機能で出力します。
@@ -37,7 +37,8 @@ MarginsはNone、Background graphicsのチェックはONでPDFとして保存し
 
 ## ライセンス
 
-本リポジトリは、画像以外はMITライセンス、画像はライセンスなしとします。
+本リポジトリは画像以外はMITライセンス、画像はライセンスなしとします。
+画像を別用途に勝手に使ったりしなければ、forkなどについては難しく考えなくて大丈夫です。
 
 ## このリポジトリの目標
 
