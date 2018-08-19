@@ -4,7 +4,7 @@ var url = process.argv[3];
 var pageFormat = process.argv[4];
 
 if (process.argv.length != 5) {
-  console.log('Please specified command options. `node pdf.js <output-path> <vivliostyle-url>`');
+  console.log('Please specified command options. `node pdf.js <output-path> <vivliostyle-url> <page-format>`');
   process.exit(1);
 }
 
