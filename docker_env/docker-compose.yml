@@ -1,0 +1,12 @@
+version: '3'
+services:
+  review:
+    image: atgrandpa/review-css-typesetting:latest
+    container_name: review
+    restart: always
+    stdin_open: true
+    volumes:
+      - ..:/repository_root
+    ports:
+      - 8000:8000
+      - 8989:8989

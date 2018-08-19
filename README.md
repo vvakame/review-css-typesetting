@@ -5,35 +5,61 @@
 
 ## この本のビルドの仕方
 
-### LaTeX版
+### 環境のセットアップ
 
-Dockerのセットアップが必要です。
+必要なものは `docker` と `make` です。
 
 ```
-$ ./build-in-docker.sh
+# このリポジトリのディレクトリで
+$ make setup
+```
+
+### LaTeX版PDF
+
+```
+# `make setup` のあとで
+$ make npm/run/pdf
 $ open ./articles/review-css-typesetting.pdf
 ```
 
-### CSS版
-
-頒布時は Vivliostyle 2017.6 + Google Chrome Version 65.0.3325.181 を利用しました。
-
-https://vivliostyle.org/download/ からVivliostyle.jsをダウンロード。
+### CSS版PDF
 
 ```
-# Vivliostyleを解凍したディレクトリで
-$ ./start-webserver
-```
-```
-# このリポジトリのディレクトリで
-$ ./setup.sh
-$ npm run css
-$ npm run serve
-$ open http://127.0.0.1:8000/viewer/vivliostyle-viewer.html#x=http://127.0.0.1:8989/book.html
+# `make setup` のあとで
+$ make css/pdf
+
+# PDF=<path> で出力先を変更できます（デフォルト：./articles/book.pdf）
+# PAGE_FORMAT=<format> でフォーマットを変更できます（デフォルト：A5）
+$ make css/pdf PDF=./articles/my_book.pdf PAGE_FORMAT=A4
 ```
 
-あとはChromeの印刷機能で出力します。
-MarginsはNone、Background graphicsのチェックはONでPDFとして保存します。
+* 処理の最後に `open {出力先のpath}` を叩いているので、不要だったら消してください
+* `PAGE_FORMAT` は [puppeteer/docs/api.md#pagepdfoptions](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions) を参考にしてください
+
+### CSS版ブラウザ確認
+
+```
+# `make setup` のあとで
+$ make css/browser
+```
+
+* 処理の最後に `open {URL}` を叩いているので、OSX環境だとデフォルトブラウザで即座に確認できます
+  * 不要だったら消してください
+
+## CSS版でCSSをいじりたい
+
+### 編集するCSSファイル
+
+* 編集するCSSファイルは `articles/book.css` です
+* PDF、ブラウザ確認、共に 上記cssを `articles/book.html` に適用して出力します
+  * DOMの構造などは `articles/book.html` を見てください
+
+### book.html に独自のHTMLタグを追加したい
+
+* `articles/review-ext.rb` が使えます
+* 使用方法などは以下を参考にしてください
+  * [Re:VIEW ナレッジベース - review-ext.rb による拡張 -](https://review-knowledge-ja.readthedocs.io/ja/latest/index.html#review-ext-rb)
+  * その他、`review-ext.rb`で検索すると情報が出てきます
 
 ## ライセンス
 

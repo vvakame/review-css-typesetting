@@ -2,31 +2,34 @@ version: 2
 jobs:
   build:
     docker:
-      - image: vvakame/review:2.4
+      - image: atgrandpa/review-css-typesetting:latest
     steps:
       - checkout
       - restore_cache:
           keys:
             - npm-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: Setup
-          command: npm install
+          name: review setup
+          command: ./setup.sh
+      - run:
+          name: vivliostyle setup
+          command: ./docker_env/review/vivliostyle_setup.sh
       - save_cache:
           key: npm-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
       - run:
-          name: Setup
-          command: bundler install
-      - run:
-          name: Test
-          command: npm test
-      - run:
-          name: Build PDF by LaTeX
-          command: npm run pdf:latex
-      - store_artifacts:
-          path: ./articles/review-css-typesetting.pdf
-          destination: review-css-typesetting.pdf
-      - run:
-          name: Build CSS
+          name: Build html
           command: npm run css
+      - run:
+          name: Start review server
+          command: npm run review/up
+      - run:
+          name: Start vivliostyle server
+          command: npm run vivliostyle/up
+      - run:
+          name: Build pdf
+          command: node docker_env/scripts/pdf.js ./articles/book.pdf http://127.0.0.1:8000/docker_env/review/vivliostyle/vivliostyle-js-2017.6/viewer/vivliostyle-viewer.html#x=http://127.0.0.1:8989/book.html A5
+      - store_artifacts:
+          path: ./articles/book.pdf
+          destination: book.pdf

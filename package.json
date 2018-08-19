@@ -28,7 +28,17 @@
     "toc": "cd articles && review-index -a --html > toc.html",
     "css": "grunt html && npm run toc && cd scripts && tsc && node main.js",
     "serve": "live-server --port=8989 --open=/book.html --cors --verbose articles/",
-    "test": "npm run html"
+    "test": "npm run html",
+    "vivliostyle/setup": "grunt vivliostyle/setup",
+    "vivliostyle/up": "grunt vivliostyle/up",
+    "vivliostyle/status": "grunt vivliostyle/status",
+    "vivliostyle/kill": "grunt vivliostyle/kill",
+    "vivliostyle/wait": "grunt vivliostyle/wait",
+    "review/setup": "grunt review/setup",
+    "review/up": "grunt review/up",
+    "review/status": "grunt review/status",
+    "review/kill": "grunt review/kill",
+    "review/wait": "grunt review/wait"
   },
   "dependencies": {},
   "devDependencies": {
@@ -45,6 +55,9 @@
     "live-server": "^1.2.0",
     "load-grunt-tasks": "3.5.0",
     "typescript": "^2.7.2",
-    "vivliostyle": "^2017.6.0"
+    "vivliostyle": "^2017.6.0",
+    "http-server": "^0.11.1",
+    "puppeteer": "git+https://github.com/GoogleChrome/puppeteer.git",
+    "request": "^2.87.0"
   }
 }
