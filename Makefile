@@ -1,6 +1,7 @@
 DOCKER_COMPOSE := docker-compose -f ./docker_env/docker-compose.yml
 DOCKER_EXEC := docker exec -it
 CONTAINER_NAME := review
+OPEN_COMMAND := open
 
 ps:
 	$(DOCKER_COMPOSE) ps
@@ -32,7 +33,7 @@ vivliostyle/setup:
 	$(DOCKER_COMPOSE) exec $(CONTAINER_NAME) /bin/bash -ci "./docker_env/review/vivliostyle_setup.sh"
 
 vivliostyle/%:
-	$(DOCKER_COMPOSE) exec $(CONTAINER_NAME) /bin/bash -ci "npm run vivliostyle/$*"
+	$(DOCKER_COMPOSE) exec -T $(CONTAINER_NAME) /bin/bash -ci "npm run vivliostyle/$*"
 
 # ===================================================
 # review
@@ -42,7 +43,7 @@ review/setup:
 	$(DOCKER_COMPOSE) exec $(CONTAINER_NAME) /bin/bash -ci "./setup.sh"
 
 review/%:
-	$(DOCKER_COMPOSE) exec $(CONTAINER_NAME) /bin/bash -ci "npm run review/$*"
+	$(DOCKER_COMPOSE) exec -T $(CONTAINER_NAME) /bin/bash -ci "npm run review/$*"
 
 # ===================================================
 # npm run {command}
@@ -66,11 +67,11 @@ server/kill: review/kill vivliostyle/kill
 build/pdf: npm/run/css
 	$(MAKE) server
 	$(DOCKER_COMPOSE) exec $(CONTAINER_NAME) /bin/bash -ci "node docker_env/scripts/pdf.js $(PDF) $(VIVLIOSTYLE_VIEWER_URL)#x=$(HTML_URL) $(PAGE_FORMAT)"
-	open $(PDF)
+	$(OPEN_COMMAND) $(PDF) &
 
 build/browser: npm/run/css
 	$(MAKE) server
-	open $(VIVLIOSTYLE_VIEWER_URL)#x=$(HTML_URL)
+	$(OPEN_COMMAND) $(VIVLIOSTYLE_VIEWER_URL)#x=$(HTML_URL) &
 
 css/pdf:
 	$(MAKE) -j build/pdf
