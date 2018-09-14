@@ -169,7 +169,11 @@ function getTOCdata(): TOC {
         const idMatched = chapTitle.name.match(/^\.\/(.*)\.html$/);
         const titleMatched = (chapTitle.textContent || "").match(/^[0-9]*\s*(.*)$/);
 
-        const titleList = Array.from(children.querySelectorAll("li"));
+        var titleList: HTMLElement[] = [];
+        if (children != undefined) {
+            titleList = Array.from(children.querySelectorAll("li"));
+        }
+
 
         toc.chapters.push({
             id: idMatched![1],
